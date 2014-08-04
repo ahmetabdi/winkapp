@@ -5,10 +5,14 @@ module Winkapp
     OPTION_KEYS = [
       :access_token,
       :username,
-      :password
+      :password,
+      :client_id,
+      :client_secret
     ]
 
-    attr_accessor *OPTION_KEYS
+    OPTION_KEYS.each do |field|
+      attr_accessor field
+    end
 
     def configure
       yield self

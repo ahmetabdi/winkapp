@@ -12,13 +12,16 @@ module Winkapp
   end
 
   class Client
-    attr_accessor *Config::OPTION_KEYS
     API_URL_SSL = 'http://winkapi.quirky.com/'
     include HTTParty
     base_uri 'http://winkapi.quirky.com/'
     # format :json
     # headers 'Accept' => 'application/json'
     # headers 'Content-Type' => 'application/json'
+
+    Config::OPTION_KEYS.each do |field|
+      attr_accessor field
+    end
 
     def initialize(username, password)
       @username = username
