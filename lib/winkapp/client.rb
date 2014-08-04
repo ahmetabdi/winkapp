@@ -2,14 +2,13 @@
 module Winkapp
   extend Config
 
-  def self.new(login, api_key = nil, timeout=nil)
-    Winkapp::Client.new(login, api_key, timeout)
+  def self.new(username=nil, password=nil)
+    Winkapp::Client.new(username, password)
   end
 
   # Get and initialize a client if configured using Config
   def self.client
-    # api_verison, login, and api_key are set in Config
-    Winkapp::Client.new(login, api_key, timeout)
+    Winkapp::Client.new(username, password)
   end
 
   class Client
@@ -21,18 +20,10 @@ module Winkapp
     # headers 'Accept' => 'application/json'
     # headers 'Content-Type' => 'application/json'
 
-    def initialize(*args)
-      args.compact!
-      self.timeout = args.last.is_a?(Fixnum) ? args.pop : nil
-      if args.count == 1
-        # Set generic OAuth2 access token and change base URI (use SSL)
-        @default_query_opts = { :access_token => args.first }
-        self.class.base_uri API_URL_SSL
-      end
-    end
-
-    def timeout=(timeout=nil)
-      self.class.default_timeout(timeout) if timeout
+    def initialize(username, password)
+      @username = username
+      @password = password
+      raise Error.new('Must provide a username and password','500') if @username.nil? || @password.nil?
     end
 
   end

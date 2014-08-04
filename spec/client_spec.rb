@@ -8,28 +8,26 @@ describe Winkapp::Client do
       @find = Winkapp::Client
     end
 
-    it "should create a new client" do
-      b = Winkapp.new(login, api_key)
+    it "should create a new client with a username and password" do
+      b = Winkapp.new(username, password)
       expect(Winkapp::Client).to equal(b.class)
     end
 
-    it "should create a new client with generic OAuth2 access token" do
-      b = Winkapp.new(access_token)
-      expect(Winkapp::Client).to equal(b.class)
+    it "should fail when trying to create a client without credentials" do
+      expect{Winkapp.new}.to raise_error(Winkapp::Error, "Must provide a username and password - '500'")
     end
 
     it "should create a new client and configure with a block" do
       Winkapp.configure do |config|
-        config.api_key = api_key
-        config.login = login
+        config.username = username
+        config.password = password
       end
 
       b = Winkapp.client
 
-      raise b.api_key.inspect
       expect(b).to be_a_kind_of(Winkapp::Client)
-      expect(b.api_key).to eq(api_key)
-      expect(b.login).to eq(login)
+      expect(b.username).to eq(username)
+      expect(b.password).to eq(password)
     end
 
   end

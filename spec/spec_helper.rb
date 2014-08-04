@@ -18,12 +18,12 @@ require File.join(File.dirname(__FILE__), '..', 'lib', 'winkapp')
 
 RSpec.configure do |config|
 
-  def api_key
-    'test_key'
+  def username
+    'test_user'
   end
 
-  def login
-    'test_account'
+  def password
+    'test_password'
   end
 
   def access_token

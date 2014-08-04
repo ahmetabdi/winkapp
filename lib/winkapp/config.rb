@@ -1,18 +1,14 @@
 module Winkapp
   module Config
 
-    # bitly client options
+    # Client options
     OPTION_KEYS = [
-      :login,
-      :api_key,
-      :api_version,
-      :timeout
+      :access_token,
+      :username,
+      :password
     ]
 
     attr_accessor *OPTION_KEYS
-
-    alias_method :access_token, :login
-    alias_method :access_token=, :login=
 
     def configure
       yield self
