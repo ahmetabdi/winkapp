@@ -1,6 +1,6 @@
 # Winkapp
 
-TODO: Write a gem description
+http://docs.wink.apiary.io/
 
 ## Installation
 
