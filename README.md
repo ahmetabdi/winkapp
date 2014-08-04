@@ -18,7 +18,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure winkapp through initializer
+
+If you want to configure bitly through an initializer (e.g. config/initializers/bitly.rb), do the following:
+
+``Winkapp.configure do |config|
+  config.api_version = 3
+  config.login = "Bitly_Username"
+  config.api_key = "API_KEY"
+end``
+
+stead of using ``Winkapp.new(username, api_key)`` to get the client, use ``Winkapp.client``:
+
+``client = Winkapp.client``
 
 ## Contributing
 
