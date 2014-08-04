@@ -23,7 +23,7 @@ module Winkapp
     def initialize(username, password)
       @username = username
       @password = password
-      raise Error.new('Must provide a username and password','500') if @username.nil? || @password.nil?
+      raise Error.new('Must provide a username and password') if @username.nil? || @password.nil?
     end
 
   end

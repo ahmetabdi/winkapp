@@ -14,7 +14,7 @@ describe Winkapp::Client do
     end
 
     it "should fail when trying to create a client without credentials" do
-      expect{Winkapp.new}.to raise_error(Winkapp::Error, "Must provide a username and password - '500'")
+      expect{Winkapp.new}.to raise_error(Winkapp::Error, 'Must provide a username and password')
     end
 
     it "should create a new client and configure with a block" do
